@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "商品列表.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
