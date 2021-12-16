@@ -19,7 +19,6 @@
 		F567D5692709FA6500980A94 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D5682709FA6500980A94 /* ProductTableViewCell.swift */; };
 		F567D56B270BD34A00980A94 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D56A270BD34A00980A94 /* LoginView.swift */; };
 		F58A6B6027082FE100D24150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A6B5F27082FE100D24150 /* AppDelegate.swift */; };
-		F58A6B6227082FE100D24150 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A6B6127082FE100D24150 /* SceneDelegate.swift */; };
 		F58A6B6927082FE400D24150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58A6B6827082FE400D24150 /* Assets.xcassets */; };
 		F58A6B6C27082FE400D24150 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F58A6B6A27082FE400D24150 /* LaunchScreen.storyboard */; };
 		F58A6B902708327E00D24150 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A6B8F2708327E00D24150 /* CollectionViewLayout.swift */; };
@@ -47,7 +46,6 @@
 		F567D56A270BD34A00980A94 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F58A6B5C27082FE100D24150 /* Preowned.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Preowned.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58A6B5F27082FE100D24150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F58A6B6127082FE100D24150 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F58A6B6827082FE400D24150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F58A6B6B27082FE400D24150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F58A6B6D27082FE400D24150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				F58A6B9B2708393700D24150 /* UserViewController.swift */,
 				F567D5662709F37300980A94 /* MineTableViewCell.swift */,
 				F567D5682709FA6500980A94 /* ProductTableViewCell.swift */,
-				F58A6B6127082FE100D24150 /* SceneDelegate.swift */,
 				F58A6B6827082FE400D24150 /* Assets.xcassets */,
 				F58A6B6A27082FE400D24150 /* LaunchScreen.storyboard */,
 				F58A6B6D27082FE400D24150 /* Info.plist */,
@@ -270,7 +267,6 @@
 				F567D5692709FA6500980A94 /* ProductTableViewCell.swift in Sources */,
 				F58A6B94270835E800D24150 /* UIColor+Hex.swift in Sources */,
 				F567D56B270BD34A00980A94 /* LoginView.swift in Sources */,
-				F58A6B6227082FE100D24150 /* SceneDelegate.swift in Sources */,
 				F58A6B922708337B00D24150 /* BaseCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
