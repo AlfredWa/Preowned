@@ -1,10 +1,3 @@
-//
-//  LoginView.swift
-//  Preowned
-//
-//  Created by admin on 2021/10/5.
-//
-
 import UIKit
 import FirebaseAuth
     

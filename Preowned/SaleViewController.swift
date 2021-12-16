@@ -1,10 +1,3 @@
-//
-//  SaleViewController.swift
-//  Preowned
-//
-//  Created by admin on 2021/10/2.
-//
-
 import UIKit
 import Photos
 

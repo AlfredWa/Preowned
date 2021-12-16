@@ -1,10 +1,3 @@
-//
-//  ProductTableViewCell.swift
-//  Preowned
-//
-//  Created by admin on 2021/10/3.
-//
-
 import UIKit
 
 class ProductTableViewCell: UITableViewCell {

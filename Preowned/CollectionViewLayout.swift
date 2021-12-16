@@ -1,10 +1,3 @@
-//
-//  CollectionViewLayout.swift
-//  Preowned
-//
-//  Created by admin on 2021/10/2.
-//
-
 import UIKit
 
 //瀑布流layout协议

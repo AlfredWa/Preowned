@@ -1,10 +1,3 @@
-//
-//  BaseCollectionView.swift
-//  Preowned
-//
-//  Created by admin on 2021/10/2.
-//
-
 import UIKit
 
 //基于协议创建collectionview数据源，自动设置identifa，注册cell，同时推断cell类型，使用时只要数据源遵循协议，只需要实现对应的fillModel方法来填充cell对应的数据即可。

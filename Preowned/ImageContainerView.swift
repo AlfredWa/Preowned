@@ -1,10 +1,3 @@
-//
-//  ImageContainerView.swift
-//  Preowned
-//
-//  Created by admin on 2021/10/3.
-//
-
 import UIKit
 // 相册选图后展示的view
 class ImageContainerView: UIView {
