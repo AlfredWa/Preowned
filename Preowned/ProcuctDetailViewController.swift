@@ -1,6 +1,5 @@
 import UIKit
 
-//  Product Detail 界面
 class ProductDetailViewController: UIViewController {
     var model: Model?
     fileprivate let scrollView = UIScrollView()
@@ -85,7 +84,6 @@ class ProductDetailViewController: UIViewController {
         scrollView.contentSize = CGSize(width: screenWidth, height: imagesView.frame.maxY + 100)
     }
     
-    //填充数据
     func setData() {
         let titleStr = NSMutableAttributedString()
         if let t = model?.title, t.count > 0 {

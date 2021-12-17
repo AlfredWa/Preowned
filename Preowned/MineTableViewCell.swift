@@ -75,7 +75,6 @@ class MineTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 class MineTableViewCellModel: NSObject, TableViewCellDefaultProtocol {
     var price = "0.00"
-    //填充数据
     func fillModel(reusableView: MineTableViewCell) {
         if let name = UserDefaults.standard.string(forKey: "mine_name"), name.count > 0 {
             reusableView.nameTextField.text = name

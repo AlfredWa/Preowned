@@ -70,7 +70,6 @@ class ProductTableViewCell: UITableViewCell {
 
 class ProductTableViewCellModel: NSObject, TableViewCellDefaultProtocol {
     var model: Model?
-    //填充数据
     func fillModel(reusableView: ProductTableViewCell) {
         reusableView.imageV.image = model?.images?.first
         let titleStr = NSMutableAttributedString()

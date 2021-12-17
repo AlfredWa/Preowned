@@ -1,6 +1,5 @@
 import UIKit
 
-//瀑布流layout协议
 @objc protocol CollectionViewLayout: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -45,7 +44,6 @@ extension CollectionViewWaterfallLayout {
     }
 }
 
-//自定义瀑布流layout
 class CollectionViewWaterfallLayout: UICollectionViewLayout {
     var columnCount: Int = 2 {
         didSet {

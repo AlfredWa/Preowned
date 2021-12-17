@@ -2,14 +2,14 @@ import UIKit
 
 class ImagesView: UIView {
     var numberOfLines: Int = 0
-    /// 左右、上下间距
+    
     var space: (lr: CGFloat, tb: CGFloat) = (lr: 10, tb: 10)
-    /// 上左下右边距
+    
     var edgeInset = UIEdgeInsets.zero
-    /// item在self.itemSizeToFit基础上再扩大size
+    
     var itemSize = CGSize.zero
     var tags = [UIView]()
-    /// 如果需要单独控制宽高，则请将其设置好放回UIView.frame中。self.itemSize在此之后生效
+    
     var itemSizeToFit: ((UIView) -> Void) = { $0.sizeToFit() }
 
     func fillModel<T>(_ model: [T]?, new: (() -> UIView), config: @escaping ((_ v: UIView, _ d: T?, _ i: Int) -> Void)) {
@@ -58,14 +58,13 @@ class ImagesView: UIView {
     }
 }
 
-/// 格式化一个持续复用的view列表
 ///
-/// - parameter superView:  需要添加到哪个view上
-/// - parameter views:      操作views
-/// - parameter datas:      数据源
-/// - parameter newView:    创建一个新的
-/// - parameter configView: 配置UI
-/// - parameter completion: 完成回调
+/// - parameter superView
+/// - parameter views
+/// - parameter datas
+/// - parameter newView
+/// - parameter configView
+/// - parameter completion
 public func formatViewList<T>(superView: UIView?,
                               views: [UIView],
                               datas: [T]?,

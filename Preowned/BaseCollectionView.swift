@@ -1,7 +1,5 @@
 import UIKit
 
-//基于协议创建collectionview数据源，自动设置identifa，注册cell，同时推断cell类型，使用时只要数据源遵循协议，只需要实现对应的fillModel方法来填充cell对应的数据即可。
-
 public protocol ListItemProtocol {
     var identifa: String { get }
     var newItem: AnyObject { get }
@@ -31,7 +29,6 @@ public extension ListItemDefaultProtocol {
 
 public protocol CollectionViewItemDefaultProtocol: CollectionViewItemProtocol, ListItemDefaultProtocol { }
 
-//collectionView数据源
 public class CollectionViewViewModel: NSObject {
 
     public var identifier = ""
@@ -51,7 +48,6 @@ public class CollectionViewViewModel: NSObject {
     public var footer: CollectionViewItemProtocol?
 }
 
-//点击cell的协议
 public protocol CollectionViewDelegate: NSObjectProtocol {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
 }
@@ -60,12 +56,10 @@ public extension CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
 }
 
-//自定义CollectionView
 public class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
 
     public weak var allDelegate: CollectionViewDelegate?
 
-    /// 设置数据源，触发didset，加载界面
     public var viewModel = [CollectionViewViewModel]() {
         didSet {
             for section in viewModel {
@@ -101,14 +95,11 @@ public class CollectionView: UICollectionView, UICollectionViewDataSource, UICol
         setup()
     }
 
-    /// 基础配置
     private func setup() {
         self.delegate = self
         self.dataSource = self
         self.keyboardDismissMode = .onDrag
     }
-
-    // MARK: - UICollectionViewDataSource
 
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.count
@@ -161,7 +152,6 @@ public class CollectionView: UICollectionView, UICollectionViewDataSource, UICol
     }
 }
 
-// MARK: - CollectionViewLayout 瀑布流协议
 extension CollectionView: CollectionViewLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountFor section: Int) -> Int {
@@ -289,7 +279,6 @@ extension CollectionView: CollectionViewLayout {
 }
 
 extension CollectionView {
-    //瀑布流初始化
     public class func waterfall() -> CollectionView {
         let layout = CollectionViewWaterfallLayout()
         layout.sectionInset = UIEdgeInsets.zero

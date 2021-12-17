@@ -2,7 +2,6 @@ import UIKit
 import Photos
 import FirebaseFirestore
 
-// Sale 发布界面
 class SaleViewController: UIViewController {
     var imgArr = [UIImage]()
     let scrollView = UIScrollView()
@@ -147,7 +146,7 @@ class SaleViewController: UIViewController {
         
         sureBtn.frame = CGRect(x: 15, y: screenHeight - tabbarHeight - navHeight - 54, width: maxWidth, height: 44)
     }
-    //发布按钮点击
+    
     @objc func publish() {
         guard let title = titleTextField.text, title.count > 0 else {
             alert(title: "please enter product name")
@@ -170,7 +169,7 @@ class SaleViewController: UIViewController {
             return
         }
         
-        //组装数据
+        
         var model = Model(id: "")
         model.userName = UserDefaults.standard.string(forKey: "mine_name")
         model.title = title
@@ -178,14 +177,14 @@ class SaleViewController: UIViewController {
         model.images = imgArr
         model.phone = phone
         model.detail = detail
-        //保存数据
+        
         DataManager.shared.save(model: model)
         DataManager.shared.addData(model: model)
-        //跳转到详情
+        
         let vc = ProductDetailViewController()
         vc.model = model
         self.navigationController?.pushViewController(vc, animated: true)
-        //清空界面数据
+        
         cleanData()
     }
     
@@ -197,7 +196,7 @@ class SaleViewController: UIViewController {
         imgArr.removeAll()
         reloadImageView()
     }
-    //提示框
+    
     func alert(title: String) {
         let v = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
         v.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -207,7 +206,7 @@ class SaleViewController: UIViewController {
     func reloadImageView() {
         containerView.addImgs(self.imgArr)
     }
-    //相册权限
+    
     func chargeAuthorization(status: PHAuthorizationStatus) {
         switch status {
         case .authorized:
@@ -227,15 +226,15 @@ class SaleViewController: UIViewController {
     }
     
     func fromAlbum() {
-        //判断设置是否支持图片库
+        
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            //初始化图片控制器
+            
             let picker = UIImagePickerController()
             picker.delegate = self
             picker.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.present(picker, animated: true, completion: nil)
         }else{
-            print("读取相册错误")
+
         }
     }
 }
@@ -245,10 +244,10 @@ extension SaleViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    //相册选中的图片
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let img = info[.originalImage] as? UIImage else {
-            print("选择失败")
+            
             return
         }
         imgArr.append(img)

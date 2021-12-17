@@ -1,5 +1,5 @@
 import UIKit
-// 相册选图后展示的view
+
 class ImageContainerView: UIView {
     var closure: ((Int) -> Void)?
     let addBtn = UIButton()
@@ -22,8 +22,7 @@ class ImageContainerView: UIView {
     @objc func addImage() {
         addImageAction?()
     }
-    //根据图片数量初始化对应的view和删除按钮
-    //超过最大数量，添加图片按钮隐藏
+    
     func addImgs(_ imgs: [UIImage]) {
         imgArr.forEach { (v) in
             v.removeFromSuperview()

@@ -1,6 +1,5 @@
 import UIKit
 
-//颜色
 extension UIColor {
     convenience init(hexColor: String) {
         var red: CGFloat = 0.0

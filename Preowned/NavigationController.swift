@@ -1,6 +1,5 @@
 import UIKit
 
-//自定义导航栏
 class NavigationController : UINavigationController {
 
     override func viewDidLoad() {

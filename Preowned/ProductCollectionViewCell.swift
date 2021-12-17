@@ -63,7 +63,6 @@ class ProductCollectionViewCellModel: NSObject, CollectionViewItemDefaultProtoco
     var itemSize: CGSize = CGSize.zero
     var model: Model?
     
-    //填充数据
     func fillModel(reusableView: ProductCollectionViewCell) {
         reusableView.imageView.image = model?.images?.first
         let titleStr = NSMutableAttributedString()

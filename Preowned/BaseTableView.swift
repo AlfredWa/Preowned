@@ -1,18 +1,15 @@
 import UIKit
 
-//基于协议创建tableview数据源，自动设置identifa，注册cell，同时推断cell类型，使用时只要数据源遵循协议，只需要实现对应的fillModel方法来填充cell对应的数据即可。
-
 protocol TableViewCellProtocol: ListItemProtocol {
 }
 
 protocol TableViewCellDefaultProtocol: TableViewCellProtocol, ListItemDefaultProtocol { }
 
-//tableview数据源类型
 class TableViewViewModel: NSObject {
     var tag: String?
-    var header: TableViewCellProtocol? //header需要继承于UITableViewHeaderFooterView，否则无法注册成功
+    var header: TableViewCellProtocol?
     var items: [TableViewCellProtocol]?
-    var footer: TableViewCellProtocol? //footer需要继承于UITableViewHeaderFooterView，否则无法注册成功
+    var footer: TableViewCellProtocol?
 }
 
 protocol TableViewDelegate: NSObjectProtocol {
@@ -27,7 +24,6 @@ extension TableViewDelegate {
 class BaseTableView: UITableView {
     weak var allDelegate: TableViewDelegate?
     
-    /// 设置数据源，触发didset，加载界面
     var viewModel = [TableViewViewModel]() {
         didSet {
             for section in viewModel {
@@ -213,7 +209,6 @@ extension UITableView {
     }
 }
 
-/// MARK: 缓存cell
 extension UITableView {
     fileprivate struct StaticKeys {
         static var cacheForHeaderFooterAndCell = "UITableView.cacheForHeaderFooterAndCell"
@@ -228,10 +223,7 @@ extension UITableView {
             return cache
         }
     }
-    /// 获取自定义缓存的cell。如果没有，则自动创建
-    ///
-    /// - Parameter identifier: 重用标识符
-    /// - Returns: 缓存的那个
+    
     func dequeueCacheCell<T: UITableViewCell>(withIdentifier identifier: String) -> T? {
         if let cell = uitableview_cacheForHeaderFooterAndCell.object(forKey: identifier as NSString) {
             return cell as? T
@@ -244,10 +236,7 @@ extension UITableView {
 
         return nil
     }
-    /// 获取自定义缓存的headder/footer。如果没有则自动创建
-    ///
-    /// - Parameter identifier: 重用标识符
-    /// - Returns: 缓存的那个
+    
     func dequeueCacheHeaderFooterView<T: UITableViewHeaderFooterView>(withIdentifier identifier: String) -> T? {
         if let cell = uitableview_cacheForHeaderFooterAndCell.object(forKey: identifier as NSString) {
             return cell as? T

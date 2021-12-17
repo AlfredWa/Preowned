@@ -1,6 +1,5 @@
 import UIKit
 
-//Product List  界面
 class ProductListViewController: UIViewController {
     let collectionView = CollectionView.waterfall()
     let section = CollectionViewViewModel()
@@ -36,7 +35,6 @@ class ProductListViewController: UIViewController {
         }
         isFirstShow = false
         
-        //没有登录，弹出登录框
         let name = UserDefaults.standard.string(forKey: "mine_name") ?? ""
         if name.count == 0 {
             LoginView().show()
@@ -44,9 +42,11 @@ class ProductListViewController: UIViewController {
     }
     
     func request() {
-        //初始化数据
         section.items?.removeAll()
-        DataManager.shared.getData()
+        print("<<<")
+        DispatchQueue.main.async {
+            DataManager.shared.getData()
+        }
         let array = DataManager.shared.dataSource
         for model in array {
             let cellModel = ProductCollectionViewCellModel()
@@ -58,7 +58,6 @@ class ProductListViewController: UIViewController {
 }
 
 extension ProductListViewController: CollectionViewDelegate {
-    //点击事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let array = self.collectionView.viewModel.first?.items else { return }
         guard array.count > indexPath.row else { return }

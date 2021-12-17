@@ -1,7 +1,6 @@
 import UIKit
 import Firebase
 
-//mine 界面
 class UserViewController: UIViewController {
     let tableView = BaseTableView()
     var isFirstShow = true
@@ -32,25 +31,15 @@ class UserViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //判断是否刷新数据
         if !isFirstShow {
             request()
         }
         isFirstShow = false
     }
-    //退出登录
     @objc func loginout() {
         let v = UIAlertController.init(title: "Are you sure to log out of the account?", message: nil, preferredStyle: .alert)
         v.addAction(UIAlertAction(title: "NO", style: .cancel, handler: nil))
         v.addAction(UIAlertAction.init(title: "YES", style: .default, handler: { _ in
-//            UserDefaults.standard.removeObject(forKey: "mine_name")
-//            UserDefaults.standard.removeObject(forKey: "mine_password")
-//            UserDefaults.standard.synchronize()
-//            let view = LoginView()
-//            view.confirmAction = { [weak self] in
-//                self?.request()
-//            }
-//            view.show()
             do{
                 try FirebaseAuth.Auth.auth().signOut()
                 UserDefaults.standard.removeObject(forKey: "mine_name")
@@ -68,7 +57,6 @@ class UserViewController: UIViewController {
         self.present(v, animated: true, completion: nil)
         
     }
-    //组装数据
     func request() {
         let section = TableViewViewModel()
         section.items = [TableViewCellProtocol]()
@@ -89,7 +77,6 @@ class UserViewController: UIViewController {
 }
 
 extension UserViewController: TableViewDelegate {
-    //点击事件
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let array = self.tableView.viewModel.first?.items else { return }
         guard array.count > indexPath.row else { return }

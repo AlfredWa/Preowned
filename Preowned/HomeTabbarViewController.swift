@@ -5,7 +5,7 @@ public enum Item : Int {
     case sale
     case user
 }
-//tabbar 界面
+
 public class HomeTabbarViewController : UITabBarController {
     
     static var defaultSelectedItem: Item = .home
@@ -42,7 +42,6 @@ public class HomeTabbarViewController : UITabBarController {
         super.viewDidLoad()
         delegate = self
         
-        //去除导航栏下面的线
         let navigationBar = UINavigationBar.appearance()
         navigationBar.isTranslucent = false
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -52,7 +51,6 @@ public class HomeTabbarViewController : UITabBarController {
         
         navigationBar.titleTextAttributes=[NSAttributedString.Key.foregroundColor:UIColor(hexColor: "#F25555"), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)]
         
-        //tabbar字体颜色
         tabBar.tintColor = UIColor(hexColor: "#F25555")
     }
 }

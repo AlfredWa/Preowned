@@ -11,7 +11,6 @@ let navHeight = 44 + statusBarHeight
 let bottomOffset: CGFloat = statusBarHeight > 20 ? 34 : 0
 let tabbarHeight:CGFloat = statusBarHeight > 20 ? 83 : 49
 
-// 数据结构
 struct Model: Identifiable{
     var id: String
     var userName: String?
@@ -22,34 +21,16 @@ struct Model: Identifiable{
     var phone: String?
 }
 
-//数据存储方式~单例
 class DataManager: NSObject {
     static let shared = DataManager()
     var dataSource = [Model]()
     var storage = Storage.storage().reference()
 
-    //假数据
-    //init() {
-        //super.init()
-        //getData()
-        //let m1 = Model.init(id: "11111", userName: "Jone", images: [UIImage.init(named: "car")!], title: "a", price: "4999", detail: "test", phone: "0011111111")
-//        let m2 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "b", price: "28888", detail: "test", phone: "999999999")
-//        let m3 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "car", price: "288889", detail: "test", phone: "999999999")
-//        let m4 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "d", price: "288888", detail: "test", phone: "999999999")
-//        let m5 = Model.init(userName: "Jone", images: [UIImage.init(named: "car")!], title: "e", price: "7999", detail: "test", phone: "0011111111")
-//        dataSource.append(m2)
-        //dataSource.append(m1)
-//        dataSource.append(m3)
-//        dataSource.append(m4)
-//        dataSource.append(m5)
-    //}
-    
-    //储存新数据
+
     func save(model: Model) {
         dataSource.append(model)
     }
     
-    //换名字后对应发布的商品也要改名字
     func changeName(name: String) {
         for (index, item) in dataSource.enumerated() {
             var model = item
@@ -62,17 +43,33 @@ class DataManager: NSObject {
     
     func addData(model: Model){
         let db = Firestore.firestore()
+        var imageURLArray = [String]()
         
         if let imageArr=model.images{
             for imageData in imageArr{
                 if let imagePNG = imageData.pngData(){
-                    storage.child("image/file.png").putData(imagePNG, metadata: nil) { _, error in
+                    let id=NSUUID().uuidString
+                    storage.child(id).putData(imagePNG, metadata: nil) { _, error in
                         if error == nil{
-                            self.storage.child("image/file.png").downloadURL { url, error in
+                            self.storage.child(id).downloadURL { url, error in
                                 if error==nil{
                                     if let url = url{
                                         let urlString = url.absoluteString
-                                        UserDefaults.standard.set(urlString, forKey: "url")
+                                        imageURLArray.append(urlString)
+                                        db.collection("models").addDocument(data: ["userName" : model.userName,
+                                                                            "title" : model.title,
+                                                                            "price" : model.price,
+                                                                            "image" : imageURLArray,
+                                                                            "phone" : model.phone,
+                                                                            "detail" : model.detail
+                                        ]){ error in
+                                            if error == nil{
+                                                self.getData()
+                                            }
+                                            else{
+                                                
+                                            }
+                                        }
                                     }
                                 }
                                 else{
@@ -87,40 +84,30 @@ class DataManager: NSObject {
                 }
             }
         }
-        
-//        storage.child("image/file.png").putData(imageData, metadata: nil) { _, error in
-//            if error == nil{
-//                self.storage.child("image/file.png").downloadURL { url, error in
-//                    if error=nil{
-//                        if let url = url{
-//                            let urlString = url?.absoluteString
-//                            UserDefaults.standard.set(urlString, forKey: "url")
-//                        }
-//                    }
-//                    else{
-//                        return
-//                    }
-//                }
-//            }
-//            else{
-//
-//            }
-//        }
-        
-        db.collection("models").addDocument(data: ["userName" : model.userName,
-                                            "title" : model.title,
-                                            "price" : model.price,
-                                            //"image" : model.images,
-                                            "phone" : model.phone,
-                                            "detail" : model.detail
-        ]){ error in
-            if error == nil{
-                self.getData()
+    }
+    
+    func getImageArr(stringArr : [String]) -> [UIImage]{
+        var imageArray=[UIImage]()
+        for urlString in stringArr{
+            print("DEBUG")
+            let url = URL(string: urlString)
+            if let url = url{
+                do {
+                    let data = try Data(contentsOf: url)
+                    let image = UIImage(data: data)
+                    if let image = image{
+                        print(image)
+                        imageArray.append(image)
+                    }
+                }catch let error as NSError {
+                    print(error)
+                }
             }
             else{
-                
+                return imageArray
             }
         }
+        return imageArray
     }
     
     func getData(){
@@ -134,7 +121,7 @@ class DataManager: NSObject {
                         self.dataSource = snapshot.documents.map { d in
                             return Model(id: d.documentID,
                                          userName: d["userName"] as? String ?? "",
-                                         images: nil,
+                                         images: self.getImageArr(stringArr: d["image"] as? [String] ?? []),
                                          title: d["title"] as? String ?? "",
                                          price: d["price"] as? String ?? "",
                                          detail: d["detail"] as? String ?? "",

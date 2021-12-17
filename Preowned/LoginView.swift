@@ -1,7 +1,6 @@
 import UIKit
 import FirebaseAuth
     
-//登录界面
 class LoginView: UIView {
     fileprivate let mainView = UIView()
     fileprivate let accountLabel = UILabel()
@@ -22,7 +21,6 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //初始化
     func creatView() {
         mainView.backgroundColor = UIColor.white
         
@@ -56,11 +54,9 @@ class LoginView: UIView {
         for item in [accountLabel, accountTextField, line1, passwordLabel, passwordTextField, line2, sureBtn] {
             mainView.addSubview(item)
         }
-        //计算frame，自动触发sizeThatFits方法
         sizeToFit()
     }
 
-    //计算frame
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let y = (screenHeight - 200)/2
         accountLabel.frame = CGRect(x: 20, y: y, width: 120, height: 30)
@@ -109,11 +105,6 @@ class LoginView: UIView {
             
         })
         
-//        UserDefaults.standard.setValue(password, forKey: "mine_password")
-//        UserDefaults.standard.synchronize()
-//
-//        dismiss()
-        
     }
     
     func showCreateAccount(email: String, password: String){
@@ -147,7 +138,6 @@ class LoginView: UIView {
         }
     }
     
-    //展示登录界面
     func show() {
         if self.superview == nil {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.1)
@@ -159,7 +149,6 @@ class LoginView: UIView {
         }
     }
     
-    //关闭登录界面
     func dismiss() {
         UIView.animate(withDuration: 0.25) {
             self.mainView.frame.origin.y = screenHeight
@@ -171,7 +160,6 @@ class LoginView: UIView {
 }
 
 extension UIWindow {
-    //获取window
     class func defaultNormalLevel() -> UIWindow {
         let nilWindow: () -> UIWindow = {
             let window = UIWindow(frame: UIScreen.main.bounds)
