@@ -22,10 +22,8 @@ class NavigationController : UINavigationController {
 }
 
 extension NavigationController : UIGestureRecognizerDelegate {
-    // 判断是否是侧滑相关的手势
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
             if gestureRecognizer == self.interactivePopGestureRecognizer {
-                // 如果当前展示的控制器是根控制器就不让其响应
                 if self.viewControllers.count < 2 ||
                     self.visibleViewController == viewControllers.first {
                     return false

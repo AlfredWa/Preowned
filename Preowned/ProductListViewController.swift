@@ -46,6 +46,7 @@ class ProductListViewController: UIViewController {
     func request() {
         //初始化数据
         section.items?.removeAll()
+        DataManager.shared.getData()
         let array = DataManager.shared.dataSource
         for model in array {
             let cellModel = ProductCollectionViewCellModel()

@@ -8,5 +8,6 @@ target 'Preowned' do
 	pod 'IQKeyboardManagerSwift', '6.5.5'
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
+	pod 'Firebase/Firestore'
 
 end

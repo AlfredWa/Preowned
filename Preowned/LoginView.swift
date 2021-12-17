@@ -77,20 +77,8 @@ class LoginView: UIView {
         return mainView.frame.size
     }
     
-    //登录按钮点击
+
     @objc fileprivate func dealWithEventAction() {
-        //本地存储账号
-//        guard let account = accountTextField.text, account.count > 0 else {
-//            return
-//        }
-//        guard let password = passwordTextField.text, password.count > 0 else {
-//            return
-//        }
-//        UserDefaults.standard.setValue(account, forKey: "mine_name")
-//        UserDefaults.standard.setValue(password, forKey: "mine_password")
-//        UserDefaults.standard.synchronize()
-//
-//        dismiss()
         print("button tabbed")
         guard let email = accountTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else{
@@ -115,6 +103,7 @@ class LoginView: UIView {
                 let uemail=user.email
                 
                 UserDefaults.standard.setValue(uemail, forKey: "mine_name")
+                UserDefaults.standard.synchronize()
                 self?.dismiss()
             }
             

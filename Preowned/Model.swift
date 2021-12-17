@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseFirestore
 
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
@@ -10,7 +11,8 @@ let bottomOffset: CGFloat = statusBarHeight > 20 ? 34 : 0
 let tabbarHeight:CGFloat = statusBarHeight > 20 ? 83 : 49
 
 // 数据结构
-struct Model {
+struct Model: Identifiable{
+    var id: String
     var userName: String?
     var images: [UIImage]?
     var title: String?
@@ -25,18 +27,20 @@ class DataManager: NSObject {
     var dataSource = [Model]()
 
     //假数据
-    override init() {
-        let m1 = Model.init(userName: "Jone", images: [UIImage.init(named: "car")!], title: "a", price: "4999", detail: "test", phone: "0011111111")
-        let m2 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "b", price: "28888", detail: "test", phone: "999999999")
-        let m3 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "car", price: "288889", detail: "test", phone: "999999999")
-        let m4 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "d", price: "288888", detail: "test", phone: "999999999")
-        let m5 = Model.init(userName: "Jone", images: [UIImage.init(named: "car")!], title: "e", price: "7999", detail: "test", phone: "0011111111")
-        dataSource.append(m2)
-        dataSource.append(m1)
-        dataSource.append(m3)
-        dataSource.append(m4)
-        dataSource.append(m5)
-    }
+    //init() {
+        //super.init()
+        //getData()
+        //let m1 = Model.init(id: "11111", userName: "Jone", images: [UIImage.init(named: "car")!], title: "a", price: "4999", detail: "test", phone: "0011111111")
+//        let m2 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "b", price: "28888", detail: "test", phone: "999999999")
+//        let m3 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "car", price: "288889", detail: "test", phone: "999999999")
+//        let m4 = Model.init(userName: "Lily", images: [UIImage.init(named: "car2")!], title: "d", price: "288888", detail: "test", phone: "999999999")
+//        let m5 = Model.init(userName: "Jone", images: [UIImage.init(named: "car")!], title: "e", price: "7999", detail: "test", phone: "0011111111")
+//        dataSource.append(m2)
+        //dataSource.append(m1)
+//        dataSource.append(m3)
+//        dataSource.append(m4)
+//        dataSource.append(m5)
+    //}
     
     //储存新数据
     func save(model: Model) {
@@ -50,6 +54,50 @@ class DataManager: NSObject {
             if model.userName == UserDefaults.standard.string(forKey: "mine_name") {
                 model.userName = name
                 dataSource[index] = model
+            }
+        }
+    }
+    
+    func addData(model: Model){
+        let db = Firestore.firestore()
+        db.collection("models").addDocument(data: ["userName" : model.userName,
+                                            "title" : model.title,
+                                            "price" : model.price,
+                                            //"image" : model.images,
+                                            "phone" : model.phone,
+                                            "detail" : model.detail
+        ]){ error in
+            if error == nil{
+                self.getData()
+            }
+            else{
+                
+            }
+        }
+    }
+    
+    func getData(){
+        print("????????????")
+        let database = Firestore.firestore()
+        database.collection("models").getDocuments { snapshot, error in
+            if error == nil{
+                if let snapshot = snapshot{
+                    DispatchQueue.main.async {
+                        print("!!!!!!!!!!!")
+                        self.dataSource = snapshot.documents.map { d in
+                            return Model(id: d.documentID,
+                                         userName: d["userName"] as? String ?? "",
+                                         images: nil,
+                                         title: d["title"] as? String ?? "",
+                                         price: d["price"] as? String ?? "",
+                                         detail: d["detail"] as? String ?? "",
+                                         phone: d["phone"] as? String ?? "")
+                        }
+                    }
+                }
+            }
+            else{
+                
             }
         }
     }

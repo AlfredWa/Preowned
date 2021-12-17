@@ -1,5 +1,6 @@
 import UIKit
 import Photos
+import FirebaseFirestore
 
 // Sale 发布界面
 class SaleViewController: UIViewController {
@@ -19,6 +20,7 @@ class SaleViewController: UIViewController {
     let imageLabel = UILabel()
     let containerView = ImageContainerView()
     let sureBtn = UIButton()
+    let database = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,16 @@ class SaleViewController: UIViewController {
             self?.imgArr.remove(at: index)
             self?.reloadImageView()
         }
+        
+//        database.collection("Test").getDocuments(){(QuerySnapshot, err) in
+//            if let err=err{
+//                print("Error getting doc: \(err)")
+//            }else{
+//                for document in QuerySnapshot?.documents{
+//                    print("\(document.documentID) => \(document.data())")
+//                }
+//            }
+//        }
     }
     // ui
     func setUI() {
@@ -157,8 +169,9 @@ class SaleViewController: UIViewController {
             alert(title: "please add product Image")
             return
         }
+        
         //组装数据
-        var model = Model()
+        var model = Model(id: "")
         model.userName = UserDefaults.standard.string(forKey: "mine_name")
         model.title = title
         model.price = price
@@ -167,6 +180,7 @@ class SaleViewController: UIViewController {
         model.detail = detail
         //保存数据
         DataManager.shared.save(model: model)
+        DataManager.shared.addData(model: model)
         //跳转到详情
         let vc = ProductDetailViewController()
         vc.model = model

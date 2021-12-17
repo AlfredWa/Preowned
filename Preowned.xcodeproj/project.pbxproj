@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		72FB486692C2A2CB3F64C886 /* Pods_Preowned.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FCC544016425BA77F546C6 /* Pods_Preowned.framework */; };
-		BB4BD371275D6D4400B794F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4BD370275D6D4400B794F5 /* GoogleService-Info.plist */; };
+		BBB14202276BE39D00E6C14C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB14201276BE39C00E6C14C /* GoogleService-Info.plist */; };
 		F567D55B2708675A00980A94 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D55A2708675A00980A94 /* ProductCollectionViewCell.swift */; };
 		F567D55D27086D3900980A94 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D55C27086D3900980A94 /* Model.swift */; };
 		F567D55F27087C8000980A94 /* ProcuctDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D55E27087C8000980A94 /* ProcuctDetailViewController.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		2F2DF0B5131F771149587ADB /* Pods-Preowned.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preowned.debug.xcconfig"; path = "Target Support Files/Pods-Preowned/Pods-Preowned.debug.xcconfig"; sourceTree = "<group>"; };
-		BB4BD370275D6D4400B794F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BBB14201276BE39C00E6C14C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C2CB2F36369511E9C66A2199 /* Pods-Preowned.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preowned.release.xcconfig"; path = "Target Support Files/Pods-Preowned/Pods-Preowned.release.xcconfig"; sourceTree = "<group>"; };
 		F567D55A2708675A00980A94 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		F567D55C27086D3900980A94 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -120,10 +120,10 @@
 				F58A6B952708384500D24150 /* HomeTabbarViewController.swift */,
 				F58A6B972708392500D24150 /* ProductListViewController.swift */,
 				F567D55A2708675A00980A94 /* ProductCollectionViewCell.swift */,
-				BB4BD370275D6D4400B794F5 /* GoogleService-Info.plist */,
 				F567D55E27087C8000980A94 /* ProcuctDetailViewController.swift */,
 				F567D5602709353300980A94 /* ImagesView.swift */,
 				F567D55C27086D3900980A94 /* Model.swift */,
+				BBB14201276BE39C00E6C14C /* GoogleService-Info.plist */,
 				F58A6B992708392C00D24150 /* SaleViewController.swift */,
 				F567D5642709F24F00980A94 /* ImageContainerView.swift */,
 				F58A6B9B2708393700D24150 /* UserViewController.swift */,
@@ -197,7 +197,7 @@
 			files = (
 				F58A6B6C27082FE400D24150 /* LaunchScreen.storyboard in Resources */,
 				F58A6B6927082FE400D24150 /* Assets.xcassets in Resources */,
-				BB4BD371275D6D4400B794F5 /* GoogleService-Info.plist in Resources */,
+				BBB14202276BE39D00E6C14C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -391,7 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

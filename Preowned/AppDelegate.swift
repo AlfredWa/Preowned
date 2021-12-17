@@ -1,6 +1,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Firebase
+import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,12 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //关闭键盘
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "sure"
+        FirebaseApp.configure()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
         window?.rootViewController = HomeTabbarViewController()
-        FirebaseApp.configure()
         return true
     }
 
