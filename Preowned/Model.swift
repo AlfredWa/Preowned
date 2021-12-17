@@ -111,13 +111,11 @@ class DataManager: NSObject {
     }
     
     func getData(){
-        print("????????????")
         let database = Firestore.firestore()
         database.collection("models").getDocuments { snapshot, error in
             if error == nil{
                 if let snapshot = snapshot{
                     DispatchQueue.main.async {
-                        print("!!!!!!!!!!!")
                         self.dataSource = snapshot.documents.map { d in
                             return Model(id: d.documentID,
                                          userName: d["userName"] as? String ?? "",
