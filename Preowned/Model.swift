@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseFirestore
+import FirebaseStorage
 
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
@@ -25,6 +26,7 @@ struct Model: Identifiable{
 class DataManager: NSObject {
     static let shared = DataManager()
     var dataSource = [Model]()
+    var storage = Storage.storage().reference()
 
     //假数据
     //init() {
@@ -60,6 +62,51 @@ class DataManager: NSObject {
     
     func addData(model: Model){
         let db = Firestore.firestore()
+        
+        if let imageArr=model.images{
+            for imageData in imageArr{
+                if let imagePNG = imageData.pngData(){
+                    storage.child("image/file.png").putData(imagePNG, metadata: nil) { _, error in
+                        if error == nil{
+                            self.storage.child("image/file.png").downloadURL { url, error in
+                                if error==nil{
+                                    if let url = url{
+                                        let urlString = url.absoluteString
+                                        UserDefaults.standard.set(urlString, forKey: "url")
+                                    }
+                                }
+                                else{
+                                    return
+                                }
+                            }
+                        }
+                        else{
+
+                        }
+                    }
+                }
+            }
+        }
+        
+//        storage.child("image/file.png").putData(imageData, metadata: nil) { _, error in
+//            if error == nil{
+//                self.storage.child("image/file.png").downloadURL { url, error in
+//                    if error=nil{
+//                        if let url = url{
+//                            let urlString = url?.absoluteString
+//                            UserDefaults.standard.set(urlString, forKey: "url")
+//                        }
+//                    }
+//                    else{
+//                        return
+//                    }
+//                }
+//            }
+//            else{
+//
+//            }
+//        }
+        
         db.collection("models").addDocument(data: ["userName" : model.userName,
                                             "title" : model.title,
                                             "price" : model.price,
