@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		72FB486692C2A2CB3F64C886 /* Pods_Preowned.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FCC544016425BA77F546C6 /* Pods_Preowned.framework */; };
-		BBB14204276C9F4D00E6C14C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB14203276C9F4D00E6C14C /* GoogleService-Info.plist */; };
+		BB77223A276D422E001AE6E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB772239276D422E001AE6E2 /* GoogleService-Info.plist */; };
 		F567D55B2708675A00980A94 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D55A2708675A00980A94 /* ProductCollectionViewCell.swift */; };
 		F567D55D27086D3900980A94 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D55C27086D3900980A94 /* Model.swift */; };
 		F567D55F27087C8000980A94 /* ProcuctDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D55E27087C8000980A94 /* ProcuctDetailViewController.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		2F2DF0B5131F771149587ADB /* Pods-Preowned.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preowned.debug.xcconfig"; path = "Target Support Files/Pods-Preowned/Pods-Preowned.debug.xcconfig"; sourceTree = "<group>"; };
-		BBB14203276C9F4D00E6C14C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB772239276D422E001AE6E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C2CB2F36369511E9C66A2199 /* Pods-Preowned.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preowned.release.xcconfig"; path = "Target Support Files/Pods-Preowned/Pods-Preowned.release.xcconfig"; sourceTree = "<group>"; };
 		F567D55A2708675A00980A94 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		F567D55C27086D3900980A94 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -119,10 +119,10 @@
 				F58A6B9D2708396400D24150 /* NavigationController.swift */,
 				F58A6B952708384500D24150 /* HomeTabbarViewController.swift */,
 				F58A6B972708392500D24150 /* ProductListViewController.swift */,
-				BBB14203276C9F4D00E6C14C /* GoogleService-Info.plist */,
 				F567D55A2708675A00980A94 /* ProductCollectionViewCell.swift */,
 				F567D55E27087C8000980A94 /* ProcuctDetailViewController.swift */,
 				F567D5602709353300980A94 /* ImagesView.swift */,
+				BB772239276D422E001AE6E2 /* GoogleService-Info.plist */,
 				F567D55C27086D3900980A94 /* Model.swift */,
 				F58A6B992708392C00D24150 /* SaleViewController.swift */,
 				F567D5642709F24F00980A94 /* ImageContainerView.swift */,
@@ -197,7 +197,7 @@
 			files = (
 				F58A6B6C27082FE400D24150 /* LaunchScreen.storyboard in Resources */,
 				F58A6B6927082FE400D24150 /* Assets.xcassets in Resources */,
-				BBB14204276C9F4D00E6C14C /* GoogleService-Info.plist in Resources */,
+				BB77223A276D422E001AE6E2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
